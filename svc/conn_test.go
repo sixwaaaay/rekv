@@ -7,8 +7,9 @@ import (
 )
 
 func TestConn(t *testing.T) {
-
-	client := NewRedisClient()
+	client := NewRedisClient(&redis.Options{
+		Addr: "localhost:6379",
+	})
 	defer func(client *redis.Client) {
 		err := client.Close()
 		if err != nil {
